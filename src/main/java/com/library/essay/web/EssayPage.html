@@ -1,0 +1,38 @@
+<html>
+<body>
+	<center>
+		<br><a wicket:id="home"><span>Home</span></a>
+		<br>
+		
+		<br>Essay Edit Form
+		<span wicket:id="feedback"/>
+		<form wicket:id="essayForm">
+			<table style="border: 1px solid black;">
+				<tr>
+					<td>Title:</td>
+					<td colspan="2"><input type="text" wicket:id="title" /></td>
+				</tr>
+				<tr>
+					<td>Author:</td>
+					<td colspan="2"><input type="text" wicket:id="author" /></td>
+				</tr>
+				<tr>
+					<td>Content:</td>
+					<td colspan="2"><textarea rows="50" cols="100" wicket:id="content" /></td>
+				</tr>
+				
+				<tr>
+					<td>
+						<input type="submit" wicket:id="save"/>						
+					</td>
+					<td>
+						<input type="submit" wicket:id="delete"/>						
+					</td>
+				</tr>
+
+			</table>
+		</form>
+
+	</center>
+</body>
+</html>

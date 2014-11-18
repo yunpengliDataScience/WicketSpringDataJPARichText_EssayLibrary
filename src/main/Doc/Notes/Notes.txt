@@ -1,0 +1,15 @@
+
+
+http://localhost:8888/WicketSpringDataJPARichText_EssayLibrary/
+
+---------------------
+References:
+---------------------
+Wicket and Tinymce:
+http://mysticcoders.com/blog/wicket-tinymce-some-advanced-tips/
+
+WicketStuff:
+http://wicket.apache.org/guide/guide/wicketstuff.html#wicketstuff_2
+
+Hibernate Search:
+http://hibernate.org/search/documentation/getting-started/
