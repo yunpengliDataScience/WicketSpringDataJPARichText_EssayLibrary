@@ -16,6 +16,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.JRXhtmlExporter;
 import net.sf.jasperreports.engine.fill.JRSwapFileVirtualizer;
 import net.sf.jasperreports.engine.util.JRSwapFile;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
@@ -53,6 +54,7 @@ public class JasperReportGenerationResource<T> extends AbstractResource {
 
 	protected JRAbstractExporter getExporter() {
 		return new JRPdfExporter();
+		//return new JRXhtmlExporter();
 	}
 
 	@Override
