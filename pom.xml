@@ -7,7 +7,7 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<wicket.version>6.17.0</wicket.version>
+		<wicket.version>6.18.0</wicket.version>
 
 		<spring.version>4.1.1.RELEASE</spring.version>
 		<hibernate.version>4.3.7.Final</hibernate.version>

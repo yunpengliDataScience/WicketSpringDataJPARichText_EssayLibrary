@@ -1,5 +1,7 @@
 package com.library.essay.web;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -9,14 +11,17 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.resource.IResource;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import wicket.contrib.tinymce.TinyMceBehavior;
 import wicket.contrib.tinymce.settings.TinyMCESettings;
 
 import com.library.essay.persistence.entities.Essay;
+import com.library.essay.reports.dataSource.EssayReportDataSource;
+import com.library.essay.reports.resource.JasperReportGenerationResource;
+import com.library.essay.reports.wicket.component.ReportPopUpLink;
 import com.library.essay.services.EssayService;
 
 public class EssayPage extends WebPage {
@@ -85,36 +90,45 @@ public class EssayPage extends WebPage {
 			}
 		};
 
-		TextField<String> titleField = new TextField<String>("title");
-		titleField.setRequired(true);
+		addFieldsToForm(essayForm);
 
-		TextField<String> authorField = new TextField<String>("author");
-		authorField.setRequired(true);
+		addSaveButtonToForm(essayForm);
 
-		TextArea<String> contentField = new TextArea<String>("content");
-		contentField.setRequired(true);
+		addDeleteButtonToForm(essayForm);
 
-		addRichTextEditor(contentField);
+		addReportButtonToForm(essayForm, "essayReport");
 
-		essayForm.add(titleField);
-		essayForm.add(authorField);
-		essayForm.add(contentField);
+		add(essayForm);
+	}
 
-		// Save button
-		Button saveButton = new Button("save", Model.of("Save")) {
-			private static final long serialVersionUID = 1L;
+	private void addReportButtonToForm(final Form<Essay> essayForm, String id) {
+
+		ReportPopUpLink<Essay> reportLink = new ReportPopUpLink<Essay>(id, null) {
+
+			private static final long serialVersionUID = -1L;
 
 			@Override
-			public void onSubmit() {
-				logger.debug("==================================================================");
-				logger.debug("Save Button is clicked!!!!!!!!!!!!!!!!!!");
-				logger.debug("==================================================================");
+			protected IResource getReportGenerationResourcetResource() {
+				Essay essay = essayForm.getModelObject();
 
+				List<Essay> essayList = new ArrayList<Essay>();
+				essayList.add(essay);
+
+				EssayReportDataSource essayReportDataSource = new EssayReportDataSource(
+						"Essay Report", essayList);
+
+				JasperReportGenerationResource<Essay> reportGenerationResource = new JasperReportGenerationResource<Essay>(
+						"essayReport.jrxml", "application/pdf",
+						essayReportDataSource);
+
+				return reportGenerationResource;
 			}
 		};
-		saveButton.setDefaultFormProcessing(true);
-		essayForm.add(saveButton);
 
+		essayForm.add(reportLink);
+	}
+
+	private void addDeleteButtonToForm(final Form<Essay> essayForm) {
 		// Delete button
 		Button deleteButton = new Button("delete", Model.of("Delete")) {
 			private static final long serialVersionUID = 1L;
@@ -135,8 +149,40 @@ public class EssayPage extends WebPage {
 		};
 		deleteButton.setDefaultFormProcessing(false);
 		essayForm.add(deleteButton);
+	}
 
-		add(essayForm);
+	private void addSaveButtonToForm(final Form<Essay> essayForm) {
+		// Save button
+		Button saveButton = new Button("save", Model.of("Save")) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onSubmit() {
+				logger.debug("==================================================================");
+				logger.debug("Save Button is clicked!!!!!!!!!!!!!!!!!!");
+				logger.debug("==================================================================");
+
+			}
+		};
+		saveButton.setDefaultFormProcessing(true);
+		essayForm.add(saveButton);
+	}
+
+	private void addFieldsToForm(final Form<Essay> essayForm) {
+		TextField<String> titleField = new TextField<String>("title");
+		titleField.setRequired(true);
+
+		TextField<String> authorField = new TextField<String>("author");
+		authorField.setRequired(true);
+
+		TextArea<String> contentField = new TextArea<String>("content");
+		contentField.setRequired(true);
+
+		addRichTextEditor(contentField);
+
+		essayForm.add(titleField);
+		essayForm.add(authorField);
+		essayForm.add(contentField);
 	}
 
 	private void addRichTextEditor(TextArea<String> contentField) {
