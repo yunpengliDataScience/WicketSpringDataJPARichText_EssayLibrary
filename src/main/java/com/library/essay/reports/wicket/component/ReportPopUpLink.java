@@ -60,13 +60,13 @@ public class ReportPopUpLink<T> extends Link<T> implements IResourceListener {
 
 	@Override
 	public final void onResourceRequested() {
-		resource = getReportGenerationResourcetResource();
+		resource = getReportGenerationResource();
 		Attributes a = new Attributes(RequestCycle.get().getRequest(),
 				RequestCycle.get().getResponse(), null);
 		resource.respond(a);
 	}
 
-	protected IResource getReportGenerationResourcetResource() {
+	protected IResource getReportGenerationResource() {
 		return resource;
 	}
 

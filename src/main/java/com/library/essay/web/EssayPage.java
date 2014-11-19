@@ -108,7 +108,7 @@ public class EssayPage extends WebPage {
 			private static final long serialVersionUID = -1L;
 
 			@Override
-			protected IResource getReportGenerationResourcetResource() {
+			protected IResource getReportGenerationResource() {
 				Essay essay = essayForm.getModelObject();
 
 				List<Essay> essayList = new ArrayList<Essay>();

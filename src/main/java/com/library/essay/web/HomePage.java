@@ -52,7 +52,7 @@ public class HomePage extends WebPage {
 			private static final long serialVersionUID = -1L;
 
 			@Override
-			protected IResource getReportGenerationResourcetResource() {
+			protected IResource getReportGenerationResource() {
 
 				List<Essay> essayList = essayService.getEssays();
 

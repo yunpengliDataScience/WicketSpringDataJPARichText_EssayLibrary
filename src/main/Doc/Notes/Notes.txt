@@ -1,4 +1,9 @@
 
+JasperReport Pop link for Wicket 6:
+See the following classes:
+1. /WicketSpringDataJPARichText_EssayLibrary/src/main/java/com/library/essay/reports/resource/JasperReportGenerationResource.java
+2. /WicketSpringDataJPARichText_EssayLibrary/src/main/java/com/library/essay/reports/wicket/component/ReportPopUpLink.java
+3. /WicketSpringDataJPARichText_EssayLibrary/src/main/java/com/library/essay/reports/dataSource/JasperReportAbstractDataSource.java
 
 Access:
 http://localhost:8888/WicketSpringDataJPARichText_EssayLibrary/
