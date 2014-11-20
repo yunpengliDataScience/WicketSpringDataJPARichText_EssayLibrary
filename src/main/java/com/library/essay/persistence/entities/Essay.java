@@ -27,8 +27,7 @@ public class Essay implements Serializable {
 	@Id
 	@Column(name = "ESSAY_ID")
 	@DocumentId
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ")
-	@SequenceGenerator(name = "SEQ", sequenceName = "ESSAY_SEQ", allocationSize = 1)
+	@GeneratedValue
 	private Long id;
 
 	@Column(name = "TITLE")

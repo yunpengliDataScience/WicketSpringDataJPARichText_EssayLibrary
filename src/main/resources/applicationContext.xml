@@ -39,8 +39,11 @@
     <bean id="dataSource" class = "com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="${jdbc.driver}" />
         <property name="jdbcUrl" value="${jdbc.url}" />
+        
+        
         <property name="user" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" /> 
+        
 
         <!-- these are C3P0 properties -->
         <property name="acquireIncrement" value="${c3p0.acquireIncrement}" />
@@ -63,13 +66,12 @@
         </property>
         <property name="jpaPropertyMap">
 			<map>
-				<!--  
-				<entry key="hibernate.hbm2ddl.auto" value="update" />
-				-->
+				  
+				<entry key="hibernate.hbm2ddl.auto" value="${hibernate.hbm2ddl.auto}" />
 				
 				<entry key="hibernate.format_sql" value="true" />
 				<entry key="hibernate.use_sql_comments" value="false" />
-				<entry key="hibernate.show_sql" value="false" />
+				<entry key="hibernate.show_sql" value="true" />
 				<entry key="hibernate.search.default.directory_provider" value="${hibernate.search.default.directory_provider}"/>
 				<entry key="hibernate.search.default.indexBase" value="${hibernate.search.default.indexBase}" />
 			</map>
