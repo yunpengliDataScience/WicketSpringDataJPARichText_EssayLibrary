@@ -2,12 +2,15 @@ package com.library.essay.web;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.link.PopupSettings;
+import org.apache.wicket.markup.html.link.ResourceLink;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
@@ -15,6 +18,7 @@ import org.apache.wicket.request.resource.IResource;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import wicket.contrib.tinymce.TinyMceBehavior;
 import wicket.contrib.tinymce.settings.TinyMCESettings;
 
@@ -98,9 +102,17 @@ public class EssayPage extends WebPage {
 
 		addReportButtonToForm(essayForm, "essayReport");
 
+		addReportButtonToFormUsingResourceLink(essayForm, "essayReport2");
+
 		add(essayForm);
 	}
 
+	/**
+	 * ReportPopUpLink customized approach
+	 * 
+	 * @param essayForm
+	 * @param id
+	 */
 	private void addReportButtonToForm(final Form<Essay> essayForm, String id) {
 
 		ReportPopUpLink<Essay> reportLink = new ReportPopUpLink<Essay>(id, null) {
@@ -126,6 +138,35 @@ public class EssayPage extends WebPage {
 		};
 
 		essayForm.add(reportLink);
+	}
+
+	/**
+	 * ResourceLink approach
+	 * 
+	 * @param essayForm
+	 * @param id
+	 */
+	private void addReportButtonToFormUsingResourceLink(
+			final Form<Essay> essayForm, String id) {
+
+		Essay essay = essayForm.getModelObject();
+
+		List<Essay> essayList = new ArrayList<Essay>();
+		essayList.add(essay);
+
+		EssayReportDataSource essayReportDataSource = new EssayReportDataSource(
+				"Essay Report", essayList);
+
+		JasperReportGenerationResource<Essay> reportGenerationResource = new JasperReportGenerationResource<Essay>(
+				"essayReport.jrxml", "application/pdf", essayReportDataSource);
+
+		ResourceLink<Void> resourceLink = new ResourceLink<Void>(id,
+				reportGenerationResource);
+
+		resourceLink.setPopupSettings(new PopupSettings(PopupSettings.RESIZABLE
+				| PopupSettings.SCROLLBARS));
+
+		essayForm.add(resourceLink);
 	}
 
 	private void addDeleteButtonToForm(final Form<Essay> essayForm) {
