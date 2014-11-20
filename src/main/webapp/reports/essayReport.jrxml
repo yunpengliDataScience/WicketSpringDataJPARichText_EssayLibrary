@@ -7,11 +7,18 @@
 	<field name="title" class="java.lang.String"/>
 	<field name="author" class="java.lang.String"/>
 	<field name="content" class="java.lang.String"/>
+	<field name="reportTitle" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="16" y="30" width="532" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{reportTitle}]]></textFieldExpression>
+			</textField>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>

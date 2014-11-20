@@ -51,6 +51,15 @@ Now that we have our custom resource in place, we can use it in the home page of
 add(new ResourceLink("rssLink", new RSSProducerResource()));
 
 
+------------------------------------------------------------
+For hbm2ddl.auto property the list of possible options is:
+
+validate: validate that the schema matches, make no changes to the schema of the database, you probably want this for production.
+update: update the schema to reflect the entities being persisted
+create: creates the schema necessary for your entities, destroying any previous data.
+create-drop: create the schema as in create above, but also drop the schema at the end of the session. This is great in early development or for testing.
+--------------------------------------------------------------
+
 ---------------------
 References:
 ---------------------
@@ -63,5 +72,27 @@ http://wicket.apache.org/guide/guide/wicketstuff.html#wicketstuff_2
 Hibernate Search:
 http://hibernate.org/search/documentation/getting-started/
 
-Resources:
+Wicket Resources:
 http://wicket.apache.org/guide/guide/resources.html
+
+H2 Dastabase:
+http://www.h2database.com/html/main.html
+
+Spring Data JPA Official: 
+http://docs.spring.io/spring-data/jpa/docs/current/reference/html/
+
+Spring Data JPA Tutorial (Annotation Based): 
+http://www.petrikainulainen.net/spring-data-jpa-tutorial/
+
+Spring Data REST XML Configuration Example (XML Based): 
+http://idodevjobs.wordpress.com/2014/07/12/spring-data-rest-xml-configuration-example/
+
+USING SPRING DATA JPA IN A JAVA SE ENVIRONMENT AND RUN TESTS WITH DBUNIT: 
+http://geowarin.github.io/2013/01/21/using-spring-data-jpa-in-a-java-se-environment-and-run-tests-with-dbunit/
+
+Spring Data JPA Tutorial Example (XML Based): 
+http://mprabhat.com/2013/09/07/spring-data-jpa/
+
+Code Examples: 
+http://source.lishman.com/tutorials/2050/hibernate-and-jpa/spring-data-jpa
+
