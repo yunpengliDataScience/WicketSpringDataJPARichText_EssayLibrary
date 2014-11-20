@@ -39,6 +39,8 @@ public class EssayPage extends WebPage {
 	public EssayPage(Essay essay) {
 
 		addHomeLink("home");
+		addEssayListLink("essayListLink");
+		
 		add(new FeedbackPanel("feedback"));
 		addEssayForm("essayForm", essay);
 	}
@@ -51,6 +53,20 @@ public class EssayPage extends WebPage {
 			@Override
 			public void onClick() {
 				setResponsePage(HomePage.class);
+			}
+		};
+
+		add(link);
+	}
+	
+	private void addEssayListLink(String id) {
+		Link<Void> link = new Link<Void>(id) {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(EssayListPage.class);
 			}
 		};
 
