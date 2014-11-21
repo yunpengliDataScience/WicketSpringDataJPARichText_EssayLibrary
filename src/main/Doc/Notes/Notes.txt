@@ -60,6 +60,16 @@ create: creates the schema necessary for your entities, destroying any previous 
 create-drop: create the schema as in create above, but also drop the schema at the end of the session. This is great in early development or for testing.
 --------------------------------------------------------------
 
+Enable html style in text field:
+
+<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+	<reportElement positionType="Float" x="16" y="61" width="544" height="64" uuid="df8c439e-ae96-4656-a27b-c4c58a029309"/>
+	<textElement markup="html"/>
+	<textFieldExpression><![CDATA[$F{content}]]></textFieldExpression>
+</textField>
+
+In IReport, set the Markup property to be html.
+
 ---------------------
 References:
 ---------------------
@@ -96,3 +106,5 @@ http://mprabhat.com/2013/09/07/spring-data-jpa/
 Code Examples: 
 http://source.lishman.com/tutorials/2050/hibernate-and-jpa/spring-data-jpa
 
+Jasper report decoration with html:
+http://mindfirejavaexperts.wordpress.com/2014/01/10/how-to-decorate-reports-in-jasper-reports-produce-certificates-with-it/

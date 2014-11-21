@@ -26,6 +26,7 @@ import org.apache.wicket.Application;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.Response;
 import org.apache.wicket.request.resource.AbstractResource;
+import org.apache.wicket.request.resource.ContentDisposition;
 import org.apache.wicket.util.time.Duration;
 
 import com.library.essay.reports.dataSource.JasperReportAbstractDataSource;
@@ -36,15 +37,16 @@ import com.library.essay.reports.dataSource.JasperReportAbstractDataSource;
 public class JasperReportGenerationResource<T> extends AbstractResource {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = Logger.getLogger(JasperReportGenerationResource.class);
+	private static final Logger logger = Logger
+			.getLogger(JasperReportGenerationResource.class);
 
 	private String reportTemplate;
 
 	private String contentType;
 	private JasperReportAbstractDataSource<T> dataSource;
 
-	public JasperReportGenerationResource(String reportTemplate, String contentType,
-			JasperReportAbstractDataSource<T> dataSource) {
+	public JasperReportGenerationResource(String reportTemplate,
+			String contentType, JasperReportAbstractDataSource<T> dataSource) {
 
 		this.reportTemplate = reportTemplate;
 		this.contentType = contentType;
@@ -53,14 +55,24 @@ public class JasperReportGenerationResource<T> extends AbstractResource {
 	}
 
 	protected JRAbstractExporter getExporter() {
-		return new JRPdfExporter();
-		//return new JRXhtmlExporter();
+
+		JRAbstractExporter exporter = null;
+		if ("text/html".equals(contentType)) {
+			exporter = new JRXhtmlExporter();
+		} else {
+			// Default is pdf
+			exporter = new JRPdfExporter();
+		}
+
+		return exporter;
 	}
 
 	@Override
 	protected ResourceResponse newResourceResponse(Attributes attributes) {
 		ResourceResponse resourceResponse = new ResourceResponse();
 		resourceResponse.setContentType(contentType);
+
+		resourceResponse.setContentDisposition(ContentDisposition.INLINE);
 		// This is a weird solution, but ok for now. Actual caching will
 		// prevent this from working properly and no caching causes weird
 		// errors.
