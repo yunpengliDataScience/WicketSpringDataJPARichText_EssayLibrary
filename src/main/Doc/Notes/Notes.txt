@@ -68,6 +68,7 @@ Enable html style in text field:
 	<textFieldExpression><![CDATA[$F{content}]]></textFieldExpression>
 </textField>
 
+In IReport, set the Markup property to be html.
 
 ---------------------
 References:
@@ -105,3 +106,5 @@ http://mprabhat.com/2013/09/07/spring-data-jpa/
 Code Examples: 
 http://source.lishman.com/tutorials/2050/hibernate-and-jpa/spring-data-jpa
 
+Jasper report decoration with html:
+http://mindfirejavaexperts.wordpress.com/2014/01/10/how-to-decorate-reports-in-jasper-reports-produce-certificates-with-it/
