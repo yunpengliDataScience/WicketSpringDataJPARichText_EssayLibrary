@@ -24,6 +24,7 @@ import wicket.contrib.tinymce.settings.TinyMCESettings;
 
 import com.library.essay.persistence.entities.Essay;
 import com.library.essay.reports.dataSource.EssayReportDataSource;
+import com.library.essay.reports.resource.ITextPdfGenerationResource;
 import com.library.essay.reports.resource.JasperReportGenerationResource;
 import com.library.essay.reports.wicket.component.ReportPopUpLink;
 import com.library.essay.services.EssayService;
@@ -119,6 +120,8 @@ public class EssayPage extends WebPage {
 		addReportButtonToForm(essayForm, "essayReport");
 
 		addReportButtonToFormUsingResourceLink(essayForm, "essayReport2");
+		
+		addItextReportButtonToForm(essayForm, "iTextEssayReport");
 
 		add(essayForm);
 	}
@@ -185,6 +188,22 @@ public class EssayPage extends WebPage {
 		essayForm.add(resourceLink);
 	}
 
+	private void addItextReportButtonToForm(
+			final Form<Essay> essayForm, String id) {
+
+		Essay essay = essayForm.getModelObject();
+
+		ITextPdfGenerationResource reportGenerationResource = new ITextPdfGenerationResource("richTextTemplate.vm", "application/pdf",essay);
+
+		ResourceLink<Void> resourceLink = new ResourceLink<Void>(id,
+				reportGenerationResource);
+
+		resourceLink.setPopupSettings(new PopupSettings(PopupSettings.RESIZABLE
+				| PopupSettings.SCROLLBARS));
+
+		essayForm.add(resourceLink);
+	}
+	
 	private void addDeleteButtonToForm(final Form<Essay> essayForm) {
 		// Delete button
 		Button deleteButton = new Button("delete", Model.of("Delete")) {

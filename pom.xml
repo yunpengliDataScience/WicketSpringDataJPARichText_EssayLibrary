@@ -22,7 +22,8 @@
 		<slf4j.version>1.7.2</slf4j.version>
 
 		<jasperreport.version>5.5.1</jasperreport.version>
-
+		<velocity.version>1.7</velocity.version>
+		<iText.version>5.5.5</iText.version>
 		<jetty.version>6.1.4</jetty.version>
 		<javassist.version>3.12.1.GA</javassist.version>
 		<aspectj.version>1.7.0</aspectj.version>
@@ -177,6 +178,20 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.4.182</version>
+		</dependency>
+		
+		<!-- iText -->
+		<dependency>
+			<groupId>com.itextpdf.tool</groupId>
+			<artifactId>xmlworker</artifactId>
+			<version>${iText.version}</version>
+		</dependency>
+		
+		<!-- Apache Velocity -->
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>${velocity.version}</version>
 		</dependency>
 
 	</dependencies>
