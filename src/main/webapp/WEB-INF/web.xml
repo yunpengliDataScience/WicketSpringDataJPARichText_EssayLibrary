@@ -1,8 +1,7 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-<web-app>
 	<display-name>Wicket Spring Data JPA Essay Library Example</display-name>
 
 	<!-- We want our Spring context to be available to our webapp if ever there 
@@ -12,6 +11,8 @@
 		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
 
+	
+	
 
 	<!-- OpenEntityManagerInViewFilter filter used to prevent LazyInstantiationException -->
 	<filter>
@@ -31,6 +32,43 @@
 		</init-param>
 	</filter>
 
+	<!--Google service based SpellChecker-->
+    <servlet>
+        <description>A spell checking servlet that accepts JSON requests and processes them using Jazzy</description>
+        <servlet-name>google-spellchecker</servlet-name>
+        <servlet-class>com.library.essay.tinymce.spellchecker.GoogleSpellChekerServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>google-spellchecker</servlet-name>
+        <url-pattern>/servlet/google-spellchecker</url-pattern>
+    </servlet-mapping>
+
+    <!--Jazzy SpellChecker-->
+    <servlet>
+        <description>A spell checking servlet that accepts JSON requests and processes them using Jazzy</description>
+        <servlet-name>jazzy-spellchecker</servlet-name>
+        <servlet-class>com.library.essay.tinymce.spellchecker.JazzySpellCheckerServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jazzy-spellchecker</servlet-name>
+        <url-pattern>/servlet/jazzy-spellchecker</url-pattern>
+    </servlet-mapping>
+
+
+    <!--JMySpell SpellChecker-->
+    <servlet>
+        <description>A spell checking servlet that accepts JSON requests and processes them using JMySpell</description>
+        <servlet-name>jmyspell-spellchecker</servlet-name>
+        <servlet-class>com.library.essay.tinymce.spellchecker.JMySpellCheckerServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jmyspell-spellchecker</servlet-name>
+        <url-pattern>/servlet/jmyspell-spellchecker</url-pattern>
+    </servlet-mapping>
+    
 	<filter>
 		<filter-name>wicketFilter</filter-name>
 		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
@@ -98,6 +136,9 @@
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
+	
+	
+	
 
 </web-app>
 

@@ -28,6 +28,17 @@
 		<javassist.version>3.12.1.GA</javassist.version>
 		<aspectj.version>1.7.0</aspectj.version>
 		<compiler-version>1.7</compiler-version>
+		
+		<servlet-api-version>2.4</servlet-api-version>
+        <json.version>20090211</json.version>
+        <!--  
+        <lucene.version>4.2.1</lucene.version>
+        <lucene.spellchecker.version>3.6.2</lucene.spellchecker.version>
+        -->
+        <jazzy.version>0.5.2-rtext-1.4.1-2</jazzy.version>
+        <slf4j-api.version>1.7.5</slf4j-api.version>
+        <logback-classic.version>1.0.13</logback-classic.version>
+        <jmyspell-core.version>1.0.0-beta-2</jmyspell-core.version>
 		<!-- default env when no profile is specified for profile during build 
 			time -->
 		<env>DEV</env>
@@ -193,6 +204,31 @@
 			<artifactId>velocity</artifactId>
 			<version>${velocity.version}</version>
 		</dependency>
+		
+		<!-- Spell checker -->
+		<dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
+        <!--  
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-suggest</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+        -->
+        <dependency>
+            <groupId>net.sf.jazzy</groupId>
+            <artifactId>jazzy</artifactId>
+            <version>${jazzy.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dts</groupId>
+            <artifactId>jmyspell-core</artifactId>
+            <version>${jmyspell-core.version}</version>
+        </dependency>
 
 	</dependencies>
 
@@ -339,6 +375,13 @@
 			<name>JBoss Repository</name>
 			<url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
 		</repository>
+		
+		<!-- For JMySpell-->
+        <repository>
+            <id>Nuxeo</id>
+            <name>Nuxeo</name>
+            <url>https://maven-us.nuxeo.org/nexus/content/repositories/vendor-releases</url>
+        </repository>
 	</repositories>
 
 

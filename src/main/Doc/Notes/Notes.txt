@@ -178,3 +178,7 @@ http://source.lishman.com/tutorials/2050/hibernate-and-jpa/spring-data-jpa
 
 Jasper report decoration with html:
 http://mindfirejavaexperts.wordpress.com/2014/01/10/how-to-decorate-reports-in-jasper-reports-produce-certificates-with-it/
+
+Local Tinymce Spellchecker:
+https://achorniy.wordpress.com/2009/08/11/tinymce-spellchecker-in-java/
+http://sourceforge.net/p/jspellchecker/code/HEAD/tree/

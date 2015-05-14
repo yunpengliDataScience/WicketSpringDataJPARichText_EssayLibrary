@@ -278,6 +278,12 @@ public class EssayPage extends WebPage {
 		settings.setToolbarLocation(TinyMCESettings.Location.top);
 		settings.setStatusbarLocation(TinyMCESettings.Location.bottom);
 		settings.setResizing(true);
+		
+		settings.addCustomSetting("theme_advanced_buttons3_add : \"spellchecker\"");
+		settings.addCustomSetting("selector: \"textarea.jazzy\"");
+		settings.addCustomSetting("plugins: \"spellchecker\"");
+		settings.addCustomSetting("spellchecker_languages : \"+English=en-us\"");
+		settings.addCustomSetting("spellchecker_rpc_url : \"http://localhost:7777/WicketSpringDataJPARichText_EssayLibrary/servlet/jazzy-spellchecker\"");
 		contentField.add(new TinyMceBehavior(settings));
 	}
 
