@@ -380,7 +380,7 @@
         <repository>
             <id>Nuxeo</id>
             <name>Nuxeo</name>
-            <url>https://maven-us.nuxeo.org/nexus/content/repositories/vendor-releases</url>
+            <url>http://maven-us.nuxeo.org/nexus/content/repositories/vendor-releases</url>
         </repository>
 	</repositories>
 
