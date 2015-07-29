@@ -41,7 +41,7 @@ public class EssayPage extends WebPage {
 
 		addHomeLink("home");
 		addEssayListLink("essayListLink");
-		
+
 		add(new FeedbackPanel("feedback"));
 		addEssayForm("essayForm", essay);
 	}
@@ -59,7 +59,7 @@ public class EssayPage extends WebPage {
 
 		add(link);
 	}
-	
+
 	private void addEssayListLink(String id) {
 		Link<Void> link = new Link<Void>(id) {
 
@@ -120,7 +120,7 @@ public class EssayPage extends WebPage {
 		addReportButtonToForm(essayForm, "essayReport");
 
 		addReportButtonToFormUsingResourceLink(essayForm, "essayReport2");
-		
+
 		addItextReportButtonToForm(essayForm, "iTextEssayReport");
 
 		add(essayForm);
@@ -188,12 +188,13 @@ public class EssayPage extends WebPage {
 		essayForm.add(resourceLink);
 	}
 
-	private void addItextReportButtonToForm(
-			final Form<Essay> essayForm, String id) {
+	private void addItextReportButtonToForm(final Form<Essay> essayForm,
+			String id) {
 
 		Essay essay = essayForm.getModelObject();
 
-		ITextPdfGenerationResource reportGenerationResource = new ITextPdfGenerationResource("richTextTemplate.vm", "application/pdf",essay);
+		ITextPdfGenerationResource reportGenerationResource = new ITextPdfGenerationResource(
+				"richTextTemplate.vm", "application/pdf", essay);
 
 		ResourceLink<Void> resourceLink = new ResourceLink<Void>(id,
 				reportGenerationResource);
@@ -203,7 +204,7 @@ public class EssayPage extends WebPage {
 
 		essayForm.add(resourceLink);
 	}
-	
+
 	private void addDeleteButtonToForm(final Form<Essay> essayForm) {
 		// Delete button
 		Button deleteButton = new Button("delete", Model.of("Delete")) {
@@ -278,12 +279,16 @@ public class EssayPage extends WebPage {
 		settings.setToolbarLocation(TinyMCESettings.Location.top);
 		settings.setStatusbarLocation(TinyMCESettings.Location.bottom);
 		settings.setResizing(true);
-		
+
 		settings.addCustomSetting("theme_advanced_buttons3_add : \"spellchecker\"");
 		settings.addCustomSetting("selector: \"textarea.jazzy\"");
 		settings.addCustomSetting("plugins: \"spellchecker\"");
 		settings.addCustomSetting("spellchecker_languages : \"+English=en-us\"");
-		settings.addCustomSetting("spellchecker_rpc_url : \"http://localhost:7777/WicketSpringDataJPARichText_EssayLibrary/servlet/jazzy-spellchecker\"");
+
+		String contextPath = getRequestCycle().getRequest().getContextPath();
+
+		settings.addCustomSetting("spellchecker_rpc_url : \"" + contextPath
+				+ "/servlet/jazzy-spellchecker\"");
 		contentField.add(new TinyMceBehavior(settings));
 	}
 
