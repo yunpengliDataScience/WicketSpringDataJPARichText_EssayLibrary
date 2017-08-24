@@ -8,6 +8,7 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.library.essay.web.EssayListPage;
 import com.library.essay.web.HomePage;
 
 
@@ -52,6 +53,9 @@ public class MainApplication extends WebApplication {
 		ServletContext servletContext = super.getServletContext();
 		applicationContext = WebApplicationContextUtils
 				.getWebApplicationContext(servletContext);
+		
+		//Mount bookmarkable page to a specific url.
+		this.mountPage("essayListPage", EssayListPage.class);
 
 	}
 

@@ -39,12 +39,50 @@
         <slf4j-api.version>1.7.5</slf4j-api.version>
         <logback-classic.version>1.0.13</logback-classic.version>
         <jmyspell-core.version>1.0.0-beta-2</jmyspell-core.version>
+        
+        <jsf.version>2.2.12</jsf.version>
+		<primefaces.version>6.1</primefaces.version>
 		<!-- default env when no profile is specified for profile during build 
 			time -->
 		<env>DEV</env>
 	</properties>
 
 	<dependencies>
+		<!-- JSF 2.2 -->
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>${jsf.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>${jsf.version}</version>
+		</dependency>
+
+		<!-- EL 3.0.0 to support method parameter in EL -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+			<scope>provided</scope>
+			<version>3.0.0</version>
+		</dependency>
+		
+		<!-- PrimeFaces  -->
+		<dependency>  
+    		<groupId>org.primefaces</groupId>  
+    		<artifactId>primefaces</artifactId>  
+    		<version>${primefaces.version}</version>  
+		</dependency>
+		
+		<!-- Primefaces Themes -->
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>all-themes</artifactId>  
+		    <version>1.0.10</version>  
+		</dependency>
+	
 		<!-- Wicket -->
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
@@ -362,6 +400,13 @@
 	</profiles>
 
 	<repositories>
+		<repository>
+	        <id>prime-repo</id>
+	        <name>PrimeFaces Maven Repository</name>
+	        <url>http://repository.primefaces.org</url>
+	        <layout>default</layout>
+	    </repository>
+	    
 		<!-- Spring repository -->
 		<repository>
 			<id>springsource-repo</id>

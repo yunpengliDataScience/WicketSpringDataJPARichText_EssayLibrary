@@ -1,6 +1,7 @@
 <html>
 <body>
 	<center>
+		<h1>Wicket JSF Hybrid with Spring</h1>
 		<span wicket:id="message">Message goes here</span> 
 		
 		<br><br><br>
@@ -8,10 +9,18 @@
 		 
 		<table>
 			<tr>
-				<td><a wicket:id="essayListLink">Essays</a></td>
+				<td><a wicket:id="essayListLink">Essays (Wicket Implementation)</a></td>
 			</tr>
 			<tr>
-				<td><a wicket:id="report">Essay Report</a></td>
+				<td><a wicket:id="report">Essay Report (Wicket Implementation)</a></td>
+			</tr>
+			
+			<tr>
+				<td><a href="jsfPages/introduction.xhtml">Introduction (JSF Primefaces Implementation)</a></td>
+			</tr>
+			
+			<tr>
+				<td><a href="jsfPages/essay.xhtml">Essays (JSF Primefaces Implementation)</a></td>
 			</tr>
 			
 		</table>

@@ -37,6 +37,8 @@ public class EssayPage extends WebPage {
 	@SpringBean
 	private EssayService essayService;
 
+	public EssayPage(){}
+	
 	public EssayPage(Essay essay) {
 
 		addHomeLink("home");
