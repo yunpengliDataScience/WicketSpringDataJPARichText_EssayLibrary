@@ -9,18 +9,23 @@
 		<br>Essay Edit Form
 		<span wicket:id="feedback"/>
 		<form wicket:id="essayForm">
+			Enable Rich Text Editor<input type="checkbox" wicket:id="toggle" />
 			<table style="border: 1px solid black;">
 				<tr>
 					<td>Title:</td>
+					
 					<td colspan="2"><input type="text" wicket:id="title" /></td>
-				</tr>
+					
+				</tr> 
 				<tr>
 					<td>Author:</td>
 					<td colspan="2"><input type="text" wicket:id="author" /></td>
 				</tr>
 				<tr>
 					<td>Content:</td>
-					<td colspan="2"><textarea class="jazzy" rows="50" cols="100" wicket:id="content" /></td>
+					
+					<td colspan="2"><span wicket:id="richTextPanel" /></td>
+					
 				</tr>
 				
 				<tr>
